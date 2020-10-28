@@ -13,7 +13,7 @@ import numpy as np
 import telegram
 import os
 import sys
-import webbrowser
+
 
 import requests
 from bs4 import BeautifulSoup
