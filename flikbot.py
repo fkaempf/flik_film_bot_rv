@@ -14,7 +14,7 @@ import telegram
 import os
 import sys
 
-
+import webbrowser
 import requests
 from bs4 import BeautifulSoup
 
@@ -108,38 +108,25 @@ def list_getter(url="https://letterboxd.com/flik_memes/list/flik-liste/page/"):
 
 now = datetime.datetime.now()
 print(str(now.strftime("%H:%M %d.%m.%Y")))
-
-
-
-
-
 print("")
 print("Running...")
 
 flik=pd.read_csv("lists\FLIK-Liste.csv")
-
 flik_unver=pd.read_csv("lists\FLIK-Liste.csv")
 
 #ab hier bot teil
 
-
 bot = telegram.Bot(token='1174845563:AAF-tTzmvMuZB2wWC07EeZHKP9tq-_97w6A')
+
 # flofight_test_bot = '1095591214:AAGLAHVYwEhZ9vOTMLUUckArORNjUfCkBiw'
 # flik_film_bot = '1174845563:AAF-tTzmvMuZB2wWC07EeZHKP9tq-_97w6A'
 
-
-
 neu_lange=None
-
 
 
 while(True):
     try:
         inet=False
-
-        
-        
-
             
         while bot.get_updates()==[] or bot.get_updates()[-1].message.text==None:
                 time.sleep(5)
@@ -149,7 +136,7 @@ while(True):
             
         resetmid()
         
-        import datetime
+        
         oldmessageid=newmessageid()
         neu_text=updatemessage()
     
@@ -163,10 +150,8 @@ while(True):
         while (True):
             inet=False
 
-           # time.sleep(1)
-            
+       
             now2 = datetime.datetime.now()
-            # print("\n" + str(now2-now))
             
             #time 5 stunden
             
@@ -187,13 +172,9 @@ while(True):
             if oldmessageid != newmessageid():
                     print("")
                     print(newmessageid())
-                    
-           
             
             try:
-               
-               
-               
+                       
                neu_text=updatemessage()
                
                 
@@ -322,11 +303,7 @@ while(True):
                                     int(updatemessage()[11:].lstrip())
                                     bot.send_message(chat_id=595203046, text="Dieser Index existiert im Verzeichnis nicht.")  
                            
-                            except:    
-                                
-                            
-                            
-                            
+                            except:                                       
                             
                                 if updatemessage()[11:].lstrip().lower() in all_lists:
                                     
@@ -429,14 +406,7 @@ while(True):
                                 bot.send_message(chat_id=bot.get_updates()[-1].message.chat_id, text=updatemessage().lower()[8:] + " wurde auf die Vorschlagsliste gesetzt.")
                         
                         resetmid()
-                        
-                        
-                        
-                                
-                                
-                        
-      
-                    
+          
             except:
 
                if oldmessageid != newmessageid() and updatemessage() =="stop":
@@ -449,8 +419,7 @@ while(True):
                bot.send_message(chat_id=595203046, text="Error")
                resetmid()
                
-              
-    
+
     except:
         if neu_text =="stop":
            
@@ -473,8 +442,6 @@ while(True):
     
     
     #Offline modus wenn telegram skript nicht funktioniert
-    
-
     
 #alternativ skript    
 if neu_lange==None:
